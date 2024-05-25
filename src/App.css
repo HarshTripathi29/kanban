@@ -1,0 +1,108 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #252525;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+}
+.App{
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  width : 100vw;
+  height : 17vh;
+  background-color: #0a0a0a;
+  color: rgb(199, 199, 199);
+  padding: 5px 10px ;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom : 2px solid rgb(50, 50, 50);
+}
+
+.board-container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #252525;
+  padding: 10px;
+  padding-top: 30px;
+  width : 100vw;
+}
+
+.board {
+  background-color: rgb(50, 50, 50);
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 215px;
+}
+
+.tasks {
+  margin-bottom: 2px;
+}
+
+.task {
+  background-color: #0a0a0a;
+  padding-left : 1px;
+  margin-bottom: 1px;
+  border-radius: 3px;
+  height : 25px;
+  width : 210px;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #989898;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  border:none;
+  border-radius: 5px;
+}
+
+.modal input {
+  margin-bottom: 10px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 5px ;
+}
+
+.input{
+  background-color: #0a0a0a;
+  width : 210px;
+  padding-left : 1px;
+  margin-bottom: 1px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 3px;
+  height : 25px;
+}
+
+.btn{
+  height: 25px;
+  width : 100px;
+  background-color: #0a0a0a;
+  border : none;
+  border-radius: 5px;
+  margin-top : 2px;
+  margin-right: 2px;
+  padding: 0;
+}
+
+.btnHeader{
+  height: 30px;
+  width : 120px;
+  background-color: #0a0a0a;
+  border : 2px solid #ff3c00;
+  border-radius: 5px;
+  padding: 0;
+}
