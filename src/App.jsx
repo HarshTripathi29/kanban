@@ -1,38 +1,23 @@
-import React, { useState } from 'react';
-import Header from './components/Header';
-import Board from './components/Board';
-import { v4 as uuidv4 } from 'uuid';
-import "./App.css"
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import Boards from './Pages/Boards'
+import { BrowserRouter as Router , Route, Routes} from 'react-router-dom'
+import Task from './Pages/Task'
 
 function App() {
-  const [boards, setBoards] = useState([]);
-
-  const addBoard = (title) => {
-    setBoards([...boards, { id: uuidv4(), title, tasks: [] }]);
-  };
-
+  
   return (
-    <div className="App">
-      <Header addBoard={addBoard}/>
-      <div className="board-container">
-        {boards.map(board => (
-          <Board key={board.id} board={board} setBoards={setBoards} boards={boards} />
-        ))}
-      </div>
-    </div>
-  );
+    <>
+    <Router>
+      <Routes>
+      <Route path='/board' element= <Boards/>/>
+      <Route path='/task' element=<Task/>/>
+      </Routes>
+    </Router>      
+    </>
+  )
 }
 
-export default App;
-
-
-
-/* / src
-├── components/
-│   ├── Board.js
-│   ├── Task.js
-│   ├── Header.js
-│   └── AddBoardModal.js
-├── App.js
-└── index.js
-*/
+export default App

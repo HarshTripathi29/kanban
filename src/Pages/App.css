@@ -1,0 +1,46 @@
+.BoardContainer{
+    background-color: rgb(25, 25, 25);
+    height : 100vh;
+    width: 100vw;
+    color : rgb(255, 255, 255);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 10px;
+}
+
+.taskPage{
+    background-color: rgb(118, 118, 118);
+    height : 100vh;
+    width : 100vw;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.taskHeading{
+    background-image: url("https://4kwallpapers.com/images/walls/thumbs_3t/3086.jpg");
+    height : 25vh;
+    width : 100vw;
+    color : white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 10px;
+}
+
+    
+.taskContainer{
+    background-color: rgb(30, 30, 30);
+    height: 70vh;
+    width : 100vw;
+    padding: 10px;
+    display : flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.taskCard{
+    height: 30vh;
+    width: 15vw;
+    background-color: rgb(8, 0, 72);
+    padding:10px;
+    color : white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

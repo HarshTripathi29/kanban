@@ -1,0 +1,34 @@
+.cardContainer{
+ height: 20vh;
+ width: 10vw;   
+ border: 2px solid rgb(255, 255, 255);
+ background-color: rgb(10, 39, 228);
+ padding : 3px;
+ border-radius : 8px;
+ margin: 10px;
+}
+.heading{
+
+}
+.description{
+
+}
+
+
+
+.taskContainer{
+    background-color: rgb(30, 30, 30);
+    height: 70vh;
+    width : 100vw;
+    padding: 10px;
+}
+
+.taskCard{
+    height: 30vh;
+    width: 15vw;
+    background-color: rgb(8, 0, 72);
+    padding:10px;
+    color : white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin : 10px;
+}
