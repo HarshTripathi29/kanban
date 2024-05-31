@@ -1,4 +1,522 @@
 *{
-padding: 0;
-margin: 0;
+  margin: 0;
+  padding: 0;
+  font-family: "Kanit", sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  width: 93vw;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background-color: #ffffff;
+  color: #232323;
+  margin-bottom: 20px;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+
+.workspace{
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+}
+
+.home-image{
+  height : 45vh;
+  margin : 20px;
+}
+
+.sidebar {
+  width: 200px;
+  height : 100vh;
+  background-color: #ffffff;
+  padding: 10px;
+  border-right: 1px solid #121212;
+  color: #121212;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  background-color: #ffffff;
+  margin-right: 1px;
+}
+
+.sidebar ul li {
+  cursor: pointer;
+  padding: 1px 2px;
+  margin: 5px 0;
+  background-color: #efefef;
+  border: none;
+  border-radius: 3px;
+  opacity: 90%;
+}
+
+.sidebar ul li:hover{
+  border:1px solid #121212;
+}
+
+.sidebar li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.sidebarInput {
+  background-color: white;
+  border: 1px solid #121212;
+  padding: 3px;
+  width: 155px;
+}
+
+.sidebarBtn {
+  background-color: #232323;
+  border: 2px solid white;
+  color: white;
+  padding: 2px 5px;
+  margin: 0px 0px 0px 1px;
+}
+
+/* Boards */
+
+.boards {
+  display: flex;
+  flex-direction: row;
+  background-color: #fdfdfd;
+  padding : 0px;
+  margin: 0;
+}
+
+.boardsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.board {
+  margin: 5px;
+  border: 1px solid #121212;
+  border-radius: 1px;
+  background-color: #ffffff;
+  width: 13vw;
+  height: auto;
+  box-shadow: 0px 1px 1px #121212;
+}
+
+.boardsHeader {
+  background-color: #ffffff;
+  color: #121212;
+  padding: 30px 15px;
+  border-bottom:1px solid #121212;
+  width: 85vw;
+  
+}
+
+.boardContainer {
+  padding: 5px;
+  background-color: #ffffff;
+  color: #121212;
+
+}
+
+.board-header {
+  background-color: #ffffff;
+  color: #121212;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 5px;
+  border-bottom:1px solid #121212;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  opacity: 90%;
+}
+
+.boardModal {
+  background-color: #ffffff;
+  width: 45vw;
+  height : 30vh;
+}
+
+.taskModal{
+
+}
+
+.modal {
+  width: 40vw;
+  background-color: #ffffff;
+  color: #121212;
+  width: 30vw;
+  padding: 20px;
+  border: 2px solid #121212;
+  border-radius: 5px;
+  position: absolute;
+  top:30vh ;
+  left: 30vw;
+}
+
+.modalForm {
+  background-color: #ffffff;
+  color: #121212;
+  width: 25vw;
+  
+}
+
+.form-entry{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.modal-input {
+  background-color: white;
+  padding: 3px;
+  margin: 5px;
+  border: 1px solid #121212;
+  border-radius: 3px;
+}
+
+.modalBtn {
+  background-color: #121212;
+  color: white;
+  border: 2px solid #121212;
+  border-radius: 3px;
+  padding: 3px;
+  margin: 2px 3px;
+  cursor: pointer;
+}
+
+.tasks {
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.task {
+  margin-bottom: 2px;
+  padding: 1px 2px;
+  border: 2px solid #121212;
+  border-radius: 5px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  color: #121212;
+  justify-content: space-between;
+  opacity: 90%;
+}
+
+.task button {
+  background-color: #121212;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 6px;
+  color: white;
+  font-weight: 800;
+}
+
+
+.button {
+  background-color: #121212;
+  color: white;
+  border: 2px solid #121212;
+  border-radius: 3px;
+  padding: 3px;
+  margin: 5px 1px;
+  cursor : pointer;
+}
+
+.-button {
+  background-color: #121212;
+  color: white;
+  border: 2px solid #121212;
+  border-radius: 3px;
+  padding: 3px;
+  margin: 5px 1px;
+  cursor : pointer;
+}
+
+.board-button {
+  background-color: #121212;
+  color: white;
+  border: 2px solid #121212;
+  border-radius: 3px;
+  padding: 3px;
+  margin: 5px 1px;
+  cursor : pointer;
+}
+
+.btn{
+  background-color: #ffffff;
+  color : #121212;
+  font-size: 14px;
+  padding : 8px;
+  border : 1px solid #121212;
+  opacity: 90%;
+  border-radius: 18px;
+  margin : 2px 5px;
+}
+
+.login-btn{
+  background-color: #ffffff;
+  color : #121212;
+  font-size: 14px;
+  padding : 8px;
+  border : 1px solid #121212;
+  opacity: 90%;
+  border-radius: 18px;
+  margin : 2px 5px;
+}
+
+.btn:hover{
+  background-color: #121212;
+  color : white;
+}
+
+/* Media Queries for Tablet Devices */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: row;
+    padding: 15px;
+    margin : 0px;
+  }
+
+  .btn{
+    padding : 5px;
+    border-radius: 13px;
+  }
+
+  
+.login-btn{
+  padding : 5px;
+  border-radius: 13px;
+}
+
+  .header h1 {
+    font-size: 1.2em;
+  }
+
+  .sidebar {
+    /* Hide sidebar on very small screens */
+  }
+
+  .boards {
+    padding: 0px;
+    margin: 0;
+    flex-direction: column;
+  }
+
+  .boardsHeader{
+    width : 100vw;
+    margin: 0;
+    background-color: #121212;
+    color : white;
+  }
+
+  .boardsContainer{
+    width :100vw;
+  }
+
+  .board {
+    width: 90vw;
+    padding: 0px;
+    margin-bottom: 10px;
+  }
+
+  .board-button{
+    background-color: #ffffff;
+    color: #121212;
+    border :2px solid white;
+ 
+  }
+
+  .task {
+    padding: 8px;
+  }
+
+  .steps ol {
+    flex-direction: column;
+  }
+
+  .steps ol li {
+    width: 90vw;
+    height: auto;
+  }
+
+  .modal {
+    width: 90%;
+    left: 5%;
+    top: 100px;
+  }
+
+  .workspace{
+    flex-direction: column;
+  }
+
+  .sidebar{
+    width: 100vw;
+    height: auto;
+  }
+
+  .sidebar ul li{
+    width : 90vw;
+  }
+
+  .sidebarInput{
+    width : 80vw;
+  }
+
+  .sidebarBtn{
+    width : 10vw;
+    padding : 3px 2px; 
+    border-radius: 1px;
+  }
+
+  .modal{
+    width : 80vw;
+    background-color: rgb(255, 255, 255);
+    position :absolute;
+    top : 20vh;
+    left : 10vw;
+    padding: 15px;
+  }
+
+  .boardModal{
+    width : 90vw;
+  }
+
+  
+
+  .form-entry{
+    justify-content: space-between;
+  }
+}
+
+/* Media Queries for Portrait Phones and Small Devices */
+@media (max-width: 375px) {
+  .header {
+    flex-direction: row;
+    padding: 15px;
+    margin : 0px;
+  }
+
+  .btn{
+    padding : 5px;
+    border-radius: 13px;
+  }
+
+
+  .login-btn{
+    padding : 5px;
+    border-radius: 13px;
+  }
+  .header h1 {
+    font-size: 1.2em;
+  }
+
+  .sidebar {
+    /* Hide sidebar on very small screens */
+  }
+
+  .boards {
+    padding: 0px;
+    margin: 0;
+    flex-direction: column;
+  }
+
+  .boardsHeader{
+    width : 100vw;
+    margin: 0;
+    background-color: #121212;
+    color : white;
+  }
+
+  .boardsContainer{
+    width :100vw;
+  }
+
+  .board {
+    width: 90vw;
+    padding: 0px;
+    margin-bottom: 10px;
+  }
+
+  .board-button{
+    background-color: #ffffff;
+    color: #121212;
+    border :2px solid white;
+ 
+  }
+
+  .task {
+    padding: 8px;
+  }
+
+  .steps ol {
+    flex-direction: column;
+  }
+
+  .steps ol li {
+    width: 90vw;
+    height: auto;
+  }
+
+  .modal {
+    width: 90%;
+    left: 5%;
+    top: 100px;
+  }
+
+  .workspace{
+    flex-direction: column;
+  }
+
+  .sidebar{
+    width: 100vw;
+    height: auto;
+  }
+
+  .sidebar ul li{
+    width : 90vw;
+  }
+
+  .sidebarInput{
+    width : 80vw;
+  }
+
+  .sidebarBtn{
+    width : 10vw;
+    padding : 3px 2px; 
+    border-radius: 1px;
+  }
+
+  .modal{
+    width : 80vw;
+    background-color: rgb(255, 255, 255);
+    position :absolute;
+    top : 20vh;
+    left : 10vw;
+    padding: 15px;
+  }
+
+  .boardModal{
+    width : 90vw;
+  }
+
+
+  .form-entry{
+    justify-content: space-between;
+  }
 }

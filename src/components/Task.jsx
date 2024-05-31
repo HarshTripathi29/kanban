@@ -1,10 +1,11 @@
 import React from 'react';
-import "../App.css"
+import '../App.css'
 
-const Task = ({ task }) => {
+const Task = ({ task, onClick, onDelete }) => {
   return (
     <div className="task">
-      <p>{task.title}</p>
+      <h4 onClick={onClick}>{task.title}</h4>
+      <button onClick={onDelete}> - </button>
     </div>
   );
 };
