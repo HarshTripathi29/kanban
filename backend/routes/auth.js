@@ -1,83 +1,106 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const { z } = require('zod');
+require('dotenv').config();
 
 // Define Zod schemas for validation
 const signupSchema = z.object({
-  name: z.string().min(1),
-  email: z.string().email(),
-  password: z.string().min(6),
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email format"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
 const signinSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
+  email: z.string().email("Invalid email format"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
 });
+
+// JWT Secret
+const JWT_SECRET = process.env.JWT_SECRET; // Ensure this is set in your environment variables
 
 // Generate JWT token
 const generateToken = (user) => {
-  return jwt.sign({ id: user._id }, 'your_jwt_secret', { expiresIn: '1d' });
+  return jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '1d' });
 };
 
 // Signup route
-const JWT_SECRET = 'your_jwt_secret_key'; // Keep this in an environment variable
-
-// Signup route
 router.post('/signup', async (req, res) => {
-    const { username, email, password } = req.body;
+  try {
+    // Validate request body
+    const { name, email, password } = signupSchema.parse(req.body);
 
-    try {
-        const existingUser = await User.findOne({ email });
+    // Check if the user already exists
+    const existingUser = await User.findOne({ email });
 
-        if (existingUser) {
-            return res.status(400).json({ message: 'User already exists' });
-        }
-
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        const user = new User({
-            username,
-            email,
-            password: hashedPassword
-        });
-
-        await user.save();
-
-        const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '1h' });
-
-        res.status(201).json({ token, user });
-    } catch (error) {
-        console.error('Error during signup:', error);
-        res.status(500).json({ message: 'Server error' });
+    if (existingUser) {
+      return res.status(400).json({ message: 'User already exists' });
     }
-});
 
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create a new user
+    const user = new User({
+      name,
+      email,
+      password: hashedPassword,
+    });
+
+    // Save the user to the database
+    await user.save();
+
+    // Generate JWT token
+    const token = generateToken(user);
+
+    // Send the token and user information
+    res.status(201).json({ token, user });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      // Send validation errors
+      res.status(400).json({ errors: error.errors });
+    } else {
+      console.error('Error during signup:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  }
+});
 
 // Login route
 router.post('/login', async (req, res) => {
-  const { email, password } = req.body;
-
   try {
-      const user = await User.findOne({ email });
+    // Validate request body
+    const { email, password } = signinSchema.parse(req.body);
 
-      if (!user) {
-          return res.status(400).json({ message: 'Invalid credentials' });
-      }
+    // Find the user by email
+    const user = await User.findOne({ email });
 
-      const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
 
-      if (!isPasswordValid) {
-          return res.status(400).json({ message: 'Invalid credentials' });
-      }
+    // Check if the password is valid
+    const isPasswordValid = await bcrypt.compare(password, user.password);
 
-      const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '1h' });
+    if (!isPasswordValid) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
 
-      res.status(200).json({ token, user });
+    // Generate JWT token
+    const token = generateToken(user);
+
+    // Send the token and user information
+    res.status(200).json({ token, user });
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      // Send validation errors
+      res.status(400).json({ errors: error.errors });
+    } else {
       console.error('Error during login:', error);
       res.status(500).json({ message: 'Server error' });
+    }
   }
 });
 
