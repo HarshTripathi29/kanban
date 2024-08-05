@@ -104,4 +104,13 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// Logout route
+router.post('/logout', (req, res) => {
+  // Invalidate the token on the client side
+  // No server-side action required with JWT
+
+  // Send a success response
+  res.status(200).json({ message: 'Logged out successfully' });
+});
+
 module.exports = router;
