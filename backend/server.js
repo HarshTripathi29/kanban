@@ -16,7 +16,10 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'] // Allow specific headers
   }));
 
+app.use('/api/boards', authenticate); 
+
 app.use(express.json());
+
 
 //connect to mongodb
 mongoose.connect(process.env.MONGODB_URI)
