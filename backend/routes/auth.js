@@ -29,6 +29,8 @@ const generateToken = (user) => {
 // Signup route
 router.post('/signup', async (req, res) => {
   try {
+    console.log('Request body:', req.body); // Debugging line
+    
     // Validate request body
     const { name, email, password } = signupSchema.parse(req.body);
 
@@ -58,15 +60,16 @@ router.post('/signup', async (req, res) => {
     // Send the token and user information
     res.status(201).json({ token, user });
   } catch (error) {
+    console.error('Error during signup:', error); // This should show detailed error
     if (error instanceof z.ZodError) {
       // Send validation errors
       res.status(400).json({ errors: error.errors });
     } else {
-      console.error('Error during signup:', error);
       res.status(500).json({ message: 'Server error' });
     }
   }
 });
+
 
 // Login route
 router.post('/login', async (req, res) => {
