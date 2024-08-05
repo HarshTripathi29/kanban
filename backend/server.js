@@ -5,6 +5,7 @@ require('dotenv').config();
 const boardRouter = require('./routes/boards');
 const listRouter = require('./routes/lists');
 const authRoutes = require('./routes/auth');
+const authenticate = require('./middleware/auth');
 
 const app = express();
 
