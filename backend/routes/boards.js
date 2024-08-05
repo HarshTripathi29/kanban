@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const Board = require('../models/Board');
 const mongoose = require('mongoose');
+const Board = require('../models/Board');
+const User = require('../models/User'); // Import the User model
 const authenticate = require('../middleware/auth');
 
 // Get all boards for the authenticated user
@@ -56,6 +57,7 @@ router.post('/', authenticate, async (req, res) => {
 
         res.status(201).json(newBoard);
     } catch (error) {
+        console.error('Error creating board:', error);
         res.status(500).json({ message: 'Error creating board', error });
     }
 });
@@ -78,7 +80,8 @@ router.put('/:id', authenticate, async (req, res) => {
 
         res.json(updatedBoard);
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        console.error('Error updating board:', err);
+        res.status(400).json({ message: 'Error updating board', error: err.message });
     }
 });
 
@@ -100,7 +103,8 @@ router.delete('/:id', authenticate, async (req, res) => {
 
         res.json({ message: 'Board deleted' });
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        console.error('Error deleting board:', err);
+        res.status(500).json({ message: 'Error deleting board', error: err.message });
     }
 });
 
