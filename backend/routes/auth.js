@@ -32,7 +32,7 @@ router.post('/signup', async (req, res) => {
     console.log('Request body:', req.body); // Debugging line
     
     // Validate request body
-    const { name, email, password } = signupSchema.parse(req.body);
+    const { username, email, password } = signupSchema.parse(req.body);
 
     // Check if the user already exists
     const existingUser = await User.findOne({ email });
@@ -46,7 +46,7 @@ router.post('/signup', async (req, res) => {
 
     // Create a new user
     const user = new User({
-      name,
+      username,
       email,
       password: hashedPassword,
     });
